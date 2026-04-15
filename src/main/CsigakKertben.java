@@ -15,7 +15,7 @@ public class CsigakKertben {
     public CsigakKertben() {
         System.out.println("***** Csigá(k) a kertben *****");
         uresKert();
-        csigak = new Csiga[3];
+        csigak = new Csiga[2];
         csigak[0] = new Csiga("piros");
         csigak[1] = Math.random() > 0.3 ? new Csiga("kék") : null;
         kert[1][0] = '|';
@@ -70,19 +70,25 @@ public class CsigakKertben {
         csigak[0].megy();
         int oszlop = 2;
         int hanyatLep = csigak[0].getMegtettUt().length();
-        for (int i = 1; i < hanyatLep; i++) {
-            kert[i][oszlop] = '.';
-        }
-        kert[hanyatLep][oszlop] = Csiga.getABRA_2().charAt(0);
-        
-        Csiga csiga = csigak[1];
-        if(csiga != null){
-            oszlop = 5;
-            hanyatLep = csiga.getMegtettUt().length();
-            for (int i = 1; i < hanyatLep; i++) {
+        if (hanyatLep != 0) {
+                for (int i = 1; i < hanyatLep; i++) {
                 kert[i][oszlop] = '.';
             }
             kert[hanyatLep][oszlop] = Csiga.getABRA_2().charAt(0);
+        }
+        
+        Csiga csiga = csigak[1];
+        if(csiga != null){
+            csigak[1].megy();
+            oszlop = 5;
+            hanyatLep = csiga.getMegtettUt().length();
+            if (hanyatLep != 0) {
+                for (int i = 1; i < hanyatLep; i++) {
+                kert[i][oszlop] = '.';
+            }
+            kert[hanyatLep][oszlop] = Csiga.getABRA_2().charAt(0);
+            }
+            
         }
     }
 }
